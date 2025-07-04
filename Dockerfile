@@ -4,26 +4,33 @@
 # It uses Node.js as the base image and installs the necessary dependencies,
 # builds the application, and sets up the container to run the app in production mode.
 
-# Use the official Node.js image
-FROM node:16-alpine
-
-# Set the working directory inside the container
+# 1. Build stage
+FROM node:18-alpine AS builder
 WORKDIR /app
 
-# Copy the package.json and package-lock.json (or yarn.lock)
-COPY package*.json ./
+# Copy package manifests and install dependencies
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
+# Copy source and build
 COPY . .
-
-# Build the Next.js app
 RUN npm run build
 
-# Expose the port that the app will run on
-EXPOSE 3000
+# 2. Runtime stage
+FROM node:18-alpine AS runner
+WORKDIR /app
 
-# Start the app in production mode
+ENV NODE_ENV=production
+
+# Only install production deps
+COPY package.json package-lock.json ./
+RUN npm ci --production
+
+# Bring over build output and static assets
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/next.config.js ./
+
+EXPOSE 3000
 CMD ["npm", "start"]
