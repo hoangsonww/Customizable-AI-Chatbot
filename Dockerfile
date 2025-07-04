@@ -8,23 +8,20 @@
 FROM node:18-alpine AS builder
 WORKDIR /app
 
-# 1️⃣ Declare build-time args
+# Build-time secrets (so next build can see them)
 ARG OPENAI_API_KEY
 ARG FIREWORKS_API_KEY
 ARG ANTHROPIC_API_KEY
 ARG PINECONE_API_KEY
 
-# 2️⃣ Expose them as ENV so next build can read process.env.*
 ENV OPENAI_API_KEY=${OPENAI_API_KEY}
 ENV FIREWORKS_API_KEY=${FIREWORKS_API_KEY}
 ENV ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
 ENV PINECONE_API_KEY=${PINECONE_API_KEY}
 
-# Install dependencies
+# Install deps & build
 COPY package.json package-lock.json ./
 RUN npm ci
-
-# Copy source & build
 COPY . .
 RUN npm run build
 
@@ -34,13 +31,8 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY package.json package-lock.json ./
-RUN npm ci --production
-
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/next.config.js ./
+# Pull everything from the builder (/app includes .next, public, node_modules, next.config.js, etc)
+COPY --from=builder /app /app
 
 EXPOSE 3000
 CMD ["npm", "start"]

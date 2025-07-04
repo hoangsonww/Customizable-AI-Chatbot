@@ -3,7 +3,7 @@
 ![Next.js Shield](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=white)
 ![React Shield](https://img.shields.io/badge/React-0D1117?logo=react&logoColor=white&labelColor=0D1117)
 ![Tailwind CSS Shield](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
-![Shadcn UI Shield](https://img.shields.io/badge/Shadcn_UI-darkyellow?logo=nextui&logoColor=white)
+![Shadcn UI Shield](https://img.shields.io/badge/Shadcn_UI-black?logo=shadcnui&logoColor=white)
 ![Framer Motion Shield](https://img.shields.io/badge/Framer_Motion-000?logo=framer&logoColor=white)
 ![TypeScript Shield](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
 ![Node.js Shield](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
@@ -14,6 +14,10 @@
 ![Vercel Shield](https://img.shields.io/badge/Vercel-000?logo=vercel&logoColor=white)
 ![RAG Shield](https://img.shields.io/badge/RAG-orange?logo=probot&logoColor=white)
 ![Figma Shield](https://img.shields.io/badge/Figma-000?logo=figma&logoColor=white)
+![Jest Shield](https://img.shields.io/badge/Jest-000?logo=jest&logoColor=white)
+![Shell Shield](https://img.shields.io/badge/Shell-green?logo=gnu-bash&logoColor=white)
+![Makefile Shield](https://img.shields.io/badge/Makefile-000?logo=gnu&logoColor=white)
+![GitHub Actions Shield](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 
 A fully customizable AI chatbot built with modern web technologies. This project is designed to let you tailor every aspect of your chatbot, from its appearance and messaging to the underlying AI integrations. With support for advanced technologies such as Next.js, Tailwind CSS, RAG (Retrieval-Augmented Generation), Pinecone, and multiple AI APIs (OpenAI, Fireworks AI, Anthropic AI), this solution makes deploying your own conversational AI a breeze.
 
