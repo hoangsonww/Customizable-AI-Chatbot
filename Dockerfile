@@ -2,24 +2,25 @@
 FROM node:18-alpine AS builder
 WORKDIR /app
 
-# Install pnpm, copy lockfile & package manifests, install deps
-RUN npm install -g pnpm@latest
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+# Copy package manifests and install deps
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # Copy source & build
 COPY . .
-RUN pnpm build
+RUN npm run build
 
 # 2. Runtime stage
 FROM node:18-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-RUN npm install -g pnpm@latest
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --prod --frozen-lockfile
 
+# Install only production deps
+COPY package.json package-lock.json ./
+RUN npm ci --production
+
+# Bring over built output and static assets
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
