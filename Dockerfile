@@ -1,29 +1,29 @@
-# File: Dockerfile
-# This Dockerfile is for a Next.js application,
-# which is a React framework for building server-rendered applications.
-# It uses Node.js as the base image and installs the necessary dependencies,
-# builds the application, and sets up the container to run the app in production mode.
-
-# Use the official Node.js image
-FROM node:16-alpine
-
-# Set the working directory inside the container
+# 1. Build stage
+FROM node:18-alpine AS builder
 WORKDIR /app
 
-# Copy the package.json and package-lock.json (or yarn.lock)
-COPY package*.json ./
+# Install pnpm, copy lockfile & package manifests, install deps
+RUN npm install -g pnpm@latest
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
+# Copy source & build
 COPY . .
+RUN pnpm build
 
-# Build the Next.js app
-RUN npm run build
+# 2. Runtime stage
+FROM node:18-alpine AS runner
+WORKDIR /app
 
-# Expose the port that the app will run on
+ENV NODE_ENV=production
+RUN npm install -g pnpm@latest
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --prod --frozen-lockfile
+
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/next.config.js ./
+
 EXPOSE 3000
-
-# Start the app in production mode
 CMD ["npm", "start"]
