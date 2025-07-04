@@ -8,11 +8,23 @@
 FROM node:18-alpine AS builder
 WORKDIR /app
 
-# Copy package manifests and install dependencies
+# 1️⃣ Declare build-time args
+ARG OPENAI_API_KEY
+ARG FIREWORKS_API_KEY
+ARG ANTHROPIC_API_KEY
+ARG PINECONE_API_KEY
+
+# 2️⃣ Expose them as ENV so next build can read process.env.*
+ENV OPENAI_API_KEY=${OPENAI_API_KEY}
+ENV FIREWORKS_API_KEY=${FIREWORKS_API_KEY}
+ENV ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+ENV PINECONE_API_KEY=${PINECONE_API_KEY}
+
+# Install dependencies
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Copy source and build
+# Copy source & build
 COPY . .
 RUN npm run build
 
@@ -22,11 +34,9 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Only install production deps
 COPY package.json package-lock.json ./
 RUN npm ci --production
 
-# Bring over build output and static assets
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules

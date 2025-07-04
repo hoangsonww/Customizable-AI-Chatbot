@@ -80,12 +80,14 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
+
       - name: Log in to GHCR
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build & push custom-ai image
         uses: docker/build-push-action@v3
         with:
@@ -97,6 +99,10 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/custom-ai:latest
           build-args: |
             NODE_ENV=production
+            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            FIREWORKS_API_KEY=${{ secrets.FIREWORKS_API_KEY }}
+            ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}
+            PINECONE_API_KEY=${{ secrets.PINECONE_API_KEY }}
 
   deploy:
     name: "🚀 Deploy to Vercel"
