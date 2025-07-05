@@ -48,12 +48,17 @@ A fully customizable AI chatbot built with modern web technologies. This project
   - [Intention Customization](#intention-customization)
 - [Usage](#usage)
   - [Use Cases](#use-cases)
+- [Testing](#testing)
+- [GitHub Actions CI/CD Pipeline](#github-actions-cicd-pipeline)
+  - [GitHub Actions Configuration](#github-actions-configuration)
+  - [Customizing the CI/CD Pipeline](#customizing-the-cicd-pipeline)
 - [Contributing](#contributing)
 - [Author](#author)
 - [License](#license)
 - [Additional Resources](#additional-resources)
 
-For quickstart, you can ignore the detailed instructions and jump straight to the [Getting Started](#getting-started), [Deployment Instructions](#deployment-instructions), [Pinecone & RAG Setup](#pinecone--rag-setup), and [Customization](#customization) sections.
+> [!TIP]
+> For quickstart, you can ignore the detailed instructions and jump straight to the [Getting Started](#getting-started), [Deployment Instructions](#deployment-instructions), [Pinecone & RAG Setup](#pinecone--rag-setup), and [Customization](#customization) sections.
 
 ---
 
@@ -356,6 +361,53 @@ This AI chatbot can be used for a variety of purposes, including:
 - **AI Showcase:** Demonstrating the capabilities of modern conversational AI.
 
 And many more! The chatbot is highly adaptable and can be tailored to suit a wide range of use cases.
+
+---
+
+## Testing
+
+To ensure the quality and reliability of the chatbot, this project includes unit tests using Jest. You can run the tests to verify that everything is functioning as expected.
+
+### Running Tests
+
+To run the tests, execute the following command in your terminal:
+
+```bash
+npm run test
+```
+or, if you prefer Yarn:
+
+```bash
+yarn test
+```
+
+This will execute the test suite and provide feedback on the functionality of the chatbot. Make sure to write tests for any new features or changes you implement to maintain code quality.
+
+---
+
+## GitHub Actions CI/CD Pipeline
+
+This project includes a GitHub Actions CI/CD pipeline to automate testing and deployment. The pipeline is configured to run tests on every push and pull request, ensuring that the codebase remains stable.
+
+### GitHub Actions Configuration
+
+The GitHub Actions workflow is defined in the `.github/workflows/ci.yml` file. It includes the following steps:
+
+- **Checkout Code:** Clones the repository to the runner.
+- **Set Up Node.js:** Installs the specified version of Node.js.
+- **Install Dependencies:** Installs the project dependencies using npm or Yarn.
+- **Run Tests:** Executes the test suite to ensure code quality.
+- **Deploy to Vercel:** Automatically deploys the application to Vercel if the tests pass.
+- **Notify on Failure:** Sends notifications if any step fails, ensuring that issues are addressed promptly.
+- **Cache Dependencies:** Caches the `node_modules` directory to speed up subsequent builds.
+
+This CI/CD pipeline helps maintain code quality and ensures that the chatbot is always in a deployable state.
+
+### Customizing the CI/CD Pipeline
+
+After forking the repository, you may want to customize the CI/CD pipeline to suit your needs. You can modify the `.github/workflows/ci.yml` file to add or remove steps, change the Node.js version, or adjust the deployment settings.
+
+Feel free to explore the GitHub Actions documentation for more information on how to customize workflows: [GitHub Actions Documentation](https://docs.github.com/en/actions).
 
 ---
 
