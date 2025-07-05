@@ -5,6 +5,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
 ![Shadcn UI](https://img.shields.io/badge/Shadcn_UI-4B5563?logo=shadcnui&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-EF4444?logo=framer&logoColor=white)
+![Radix UI](https://img.shields.io/badge/Radix_UI-1F2937?logo=radixui&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-3C873A?logo=nodedotjs&logoColor=white)
 ![Pinecone](https://img.shields.io/badge/Pinecone-6366F1?logo=databricks&logoColor=white)
@@ -361,6 +362,78 @@ This AI chatbot can be used for a variety of purposes, including:
 - **AI Showcase:** Demonstrating the capabilities of modern conversational AI.
 
 And many more! The chatbot is highly adaptable and can be tailored to suit a wide range of use cases.
+
+---
+
+## Makefile and Shell Scripts
+
+This project includes a `Makefile` and several shell scripts to streamline development tasks. These scripts automate common tasks such as starting the development server, running tests, and deploying the application.
+
+### Makefile
+
+The `Makefile` provides a simple interface for running commands. Here are some common targets:
+
+1. **`setup`:**  
+   Installs dependencies and sets up the project environment.
+   ```bash
+   make setup
+   ```
+   
+2. **`dev`:**  
+   Starts the development server.
+   ```bash
+   make dev
+   ```
+   
+3. **`test`:**  
+   Runs the test suite.
+   ```bash
+   make test
+   ```
+   
+4. **`deploy`:**  
+   Deploys the application to Vercel.
+   ```bash
+   make deploy
+   ```
+   
+5. **`upsert`:**  
+   Upserts documents to Pinecone for RAG.
+   ```bash
+   make upsert
+   ```
+   
+6. **`clean`:**  
+   Cleans up temporary files and caches.
+   ```bash
+   make clean
+   ```
+   
+_and many more! You can view the full list of targets by running `make help`._
+   
+### Shell Scripts
+
+The Makefile actually calls several shell scripts to perform specific tasks. Here are some of the key scripts:
+
+1. **`scripts/dev.sh`:**  
+   Starts the development server. This script is called when you run `make dev`.
+
+2. **`scripts/build.sh`:**  
+   Builds the application for production. This script is called when you run `make build`.
+
+3. **`scripts/test.sh`:**  
+   Runs the test suite using Jest. This script is called when you run `make test`.
+
+4. **`scripts/deploy.sh`:**  
+   Deploys the application to Vercel. This script is called when you run `make deploy`.
+
+5. **`scripts/upsert-pinecone.sh`:**  
+   Upserts documents to Pinecone for RAG. This script is called when you run `make upsert`.
+
+6. **`scripts/setup.sh`:**  
+   Installs dependencies and sets up the project environment. This script is called when you run `make setup`.
+
+_and many more! You can view the full list of scripts in the `scripts` directory._
 
 ---
 
