@@ -1,23 +1,24 @@
 # Customizable AI Chatbot - Build Your Own Conversational AI in Minutes ⏰
 
-![Next.js Shield](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=white)
-![React Shield](https://img.shields.io/badge/React-0D1117?logo=react&logoColor=white&labelColor=0D1117)
-![Tailwind CSS Shield](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
-![Shadcn UI Shield](https://img.shields.io/badge/Shadcn_UI-black?logo=shadcnui&logoColor=white)
-![Framer Motion Shield](https://img.shields.io/badge/Framer_Motion-000?logo=framer&logoColor=white)
-![TypeScript Shield](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
-![Node.js Shield](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
-![Pinecone Shield](https://img.shields.io/badge/Pinecone-000?logo=databricks&logoColor=white)
-![OpenAI Shield](https://img.shields.io/badge/OpenAI-412991?logo=openai&logoColor=white)
-![Fireworks AI Shield](https://img.shields.io/badge/Fireworks_AI-green?logo=openaigym&logoColor=white)
-![Anthropic AI Shield](https://img.shields.io/badge/Anthropic_AI-000?logo=anthropic&logoColor=white)
-![Vercel Shield](https://img.shields.io/badge/Vercel-000?logo=vercel&logoColor=white)
-![RAG Shield](https://img.shields.io/badge/RAG-orange?logo=probot&logoColor=white)
-![Figma Shield](https://img.shields.io/badge/Figma-000?logo=figma&logoColor=white)
-![Jest Shield](https://img.shields.io/badge/Jest-000?logo=jest&logoColor=white)
-![Shell Shield](https://img.shields.io/badge/Shell-green?logo=gnu-bash&logoColor=white)
-![Makefile Shield](https://img.shields.io/badge/Makefile-000?logo=gnu&logoColor=white)
-![GitHub Actions Shield](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-111827?logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-087EA4?logo=react&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
+![Shadcn UI](https://img.shields.io/badge/Shadcn_UI-4B5563?logo=shadcnui&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-EF4444?logo=framer&logoColor=white)
+![Radix UI](https://img.shields.io/badge/Radix_UI-1F2937?logo=radixui&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-3C873A?logo=nodedotjs&logoColor=white)
+![Pinecone](https://img.shields.io/badge/Pinecone-6366F1?logo=databricks&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?logo=openai&logoColor=white)
+![Fireworks AI](https://img.shields.io/badge/Fireworks_AI-16A34A?logo=openaigym&logoColor=white)
+![Anthropic AI](https://img.shields.io/badge/Anthropic_AI-78350F?logo=anthropic&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-111827?logo=vercel&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG-F97316?logo=probot&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-EF4444?logo=figma&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-9333EA?logo=jest&logoColor=white)
+![Shell](https://img.shields.io/badge/Shell-10B981?logo=gnu-bash&logoColor=white)
+![Makefile](https://img.shields.io/badge/Makefile-4B5563?logo=gnu&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 
 A fully customizable AI chatbot built with modern web technologies. This project is designed to let you tailor every aspect of your chatbot, from its appearance and messaging to the underlying AI integrations. With support for advanced technologies such as Next.js, Tailwind CSS, RAG (Retrieval-Augmented Generation), Pinecone, and multiple AI APIs (OpenAI, Fireworks AI, Anthropic AI), this solution makes deploying your own conversational AI a breeze.
 
@@ -364,6 +365,78 @@ And many more! The chatbot is highly adaptable and can be tailored to suit a wid
 
 ---
 
+## Makefile and Shell Scripts
+
+This project includes a `Makefile` and several shell scripts to streamline development tasks. These scripts automate common tasks such as starting the development server, running tests, and deploying the application.
+
+### Makefile
+
+The `Makefile` provides a simple interface for running commands. Here are some common targets:
+
+1. **`setup`:**  
+   Installs dependencies and sets up the project environment.
+   ```bash
+   make setup
+   ```
+   
+2. **`dev`:**  
+   Starts the development server.
+   ```bash
+   make dev
+   ```
+   
+3. **`test`:**  
+   Runs the test suite.
+   ```bash
+   make test
+   ```
+   
+4. **`deploy`:**  
+   Deploys the application to Vercel.
+   ```bash
+   make deploy
+   ```
+   
+5. **`upsert`:**  
+   Upserts documents to Pinecone for RAG.
+   ```bash
+   make upsert
+   ```
+   
+6. **`clean`:**  
+   Cleans up temporary files and caches.
+   ```bash
+   make clean
+   ```
+   
+_and many more! You can view the full list of targets by running `make help`._
+   
+### Shell Scripts
+
+The Makefile actually calls several shell scripts to perform specific tasks. Here are some of the key scripts:
+
+1. **`scripts/dev.sh`:**  
+   Starts the development server. This script is called when you run `make dev`.
+
+2. **`scripts/build.sh`:**  
+   Builds the application for production. This script is called when you run `make build`.
+
+3. **`scripts/test.sh`:**  
+   Runs the test suite using Jest. This script is called when you run `make test`.
+
+4. **`scripts/deploy.sh`:**  
+   Deploys the application to Vercel. This script is called when you run `make deploy`.
+
+5. **`scripts/upsert-pinecone.sh`:**  
+   Upserts documents to Pinecone for RAG. This script is called when you run `make upsert`.
+
+6. **`scripts/setup.sh`:**  
+   Installs dependencies and sets up the project environment. This script is called when you run `make setup`.
+
+_and many more! You can view the full list of scripts in the `scripts` directory._
+
+---
+
 ## Testing
 
 To ensure the quality and reliability of the chatbot, this project includes unit tests using Jest. You can run the tests to verify that everything is functioning as expected.
@@ -434,8 +507,6 @@ If you have any questions or feedback, feel free to reach out to me at:
 - **Personal AI Assistant:** [Lumina AI](https://lumina-david.vercel.app/)
 - **Email:** [Email](mailto:hoangson091104@gmail.com)
 
-Additionally, this chatbot was inspired by Dr. Ringel's work and chatbot at UNC-Chapel Hill. You can find more about his work at [Dr. Ringel's Website](https://www.ringel.ai/).
-
 ---
 
 ## License
@@ -444,7 +515,7 @@ This project is licensed under the [MIT License](LICENSE). Please review the lic
 
 > [!WARNING]
 > **NOTE:** This project is for educational purposes only. It is not intended for commercial use or distribution. Additionally,
-you must keep the footer credit intact to respect the original creator's work.
+you must keep the footer credit intact to respect the original creator's work, regardless of any modifications you make to the codebase. The footer credit is a way to acknowledge the original creator and maintain transparency about the project's origins.
 
 By using or contributing to this project, you agree to abide by the terms of the license.
 

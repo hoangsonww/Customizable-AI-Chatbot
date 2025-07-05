@@ -14,6 +14,7 @@ help:
 	@echo "  setup      Clone repo, install deps & scaffold .env"
 	@echo "  dev        Start Next.js development server"
 	@echo "  build      Build production bundle"
+	@echo "  test       Run tests (unit, integration, e2e)"
 	@echo "  deploy     Deploy to Vercel (production)"
 	@echo "  upsert     Upsert documents to Pinecone for RAG"
 	@echo "  customize  Interactive config for UI/identity/intention"
@@ -26,6 +27,10 @@ setup:
 dev:
 	@echo "🚀 Starting dev server..."
 	@$(SCRIPTS_DIR)/dev.sh
+
+test:
+	@echo "🧪 Running tests..."
+	@$(SCRIPTS_DIR)/test.sh
 
 build:
 	@echo "🔨 Building for production..."

@@ -1,6 +1,6 @@
 {
-  "name": "custom-ai",
-  "description": "A customizable AI application built with Next.js, Tailwind CSS, and Radix UI.",
+  "name": "custom-ai-chatbot",
+  "description": "A customizable AI chatbot application built with Next.js, Tailwind CSS, and Radix UI.",
   "version": "1.1.0",
   "private": false,
   "author": "Son Nguyen",
