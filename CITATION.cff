@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Customizable AI Chatbot"
+version: "1.1.2"
+date-released: 2025-05-15
+authors:
+  - family-names: "Nguyen"
+    given-names: "Son (David)"
+    alias: "hoangsonww"
+    email: "Email"
+    website: "https://customizable-ai-chatbot.vercel.app"
+repository-code: "https://github.com/hoangsonww/Customizable-AI-Chatbot"
+license: "MIT"
+type: software
+keywords:
+  - conversational AI
+  - chatbot
+  - Next.js
+  - Tailwind CSS
+  - Retrieval-Augmented Generation
+  - Pinecone
+  - OpenAI
+  - Fireworks AI
+  - Anthropic AI
+  - Vercel
+abstract: >
+  A fully customizable AI chatbot template built with modern web technologies.
+  This project allows developers to easily tailor the appearance, behavior, and AI integrations 
+  of a chatbot. It supports advanced technologies such as Next.js, Tailwind CSS, RAG, Pinecone, 
+  and multiple AI APIs (OpenAI, Fireworks AI, Anthropic AI), enabling rapid deployment 
+  and customization for various use cases including personal assistants, FAQ bots, 
+  research assistants, and educational tools.
