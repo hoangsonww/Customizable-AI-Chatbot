@@ -47,3 +47,5 @@ Thanks for your interest in contributing! Please take a moment to read this guid
 2. Open a PR against `develop` and fill out the PR template.
 3. Ensure CI passes (lint, tests, build).
 4. Respond to review feedback—thank you!
+
+Refer to the [README.md](../README.md) for more details on project structure and scripts, as well as the [SECURITY.md](SECURITY.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for our policies.
