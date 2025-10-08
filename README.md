@@ -35,6 +35,9 @@ A fully customizable AI chatbot built with modern web technologies. This project
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Architecture](#architecture-overview)
+  - [Detailed System Architecture](#detailed-system-architecture)
+  - [Full Architecture Documentation](ARCHITECTURE.md)
 - [Getting Started](#getting-started)
   - [Fork and Clone](#fork-and-clone)
   - [Service Accounts Setup](#service-accounts-setup)
@@ -93,6 +96,134 @@ A very high-level overview of the architecture is shown below:
 <p align="center">
   <img src="img/architecture.JPG" alt="AI Chatbot Architecture" width="100%" style="border-radius: 8px">
 </p>
+
+#### Detailed System Architecture
+
+For a comprehensive understanding of the system architecture, please refer to the [ARCHITECTURE.md](ARCHITECTURE.md) document. Below are interactive Mermaid diagrams illustrating key components:
+
+##### High-Level System Flow
+
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        UI[React UI Components]
+        Chat[Chat Interface]
+        Input[User Input]
+    end
+
+    subgraph "Next.js Application Layer"
+        API[API Routes]
+        Route[api/chat/route.ts]
+    end
+
+    subgraph "Business Logic Layer"
+        IM[Intention Module]
+        RM[Response Module]
+        SM[Streaming Module]
+    end
+
+    subgraph "AI Providers Layer"
+        OpenAI[OpenAI API]
+        Anthropic[Anthropic API]
+        Fireworks[Fireworks API]
+    end
+
+    subgraph "Vector Database Layer"
+        Pinecone[Pinecone Index]
+        Embeddings[Vector Embeddings]
+    end
+
+    UI --> Chat
+    Chat --> Input
+    Input --> API
+    API --> Route
+    Route --> IM
+    IM --> OpenAI
+    Route --> RM
+    RM --> SM
+    RM --> OpenAI
+    RM --> Anthropic
+    RM --> Fireworks
+    RM --> Pinecone
+    Pinecone --> Embeddings
+    SM --> UI
+```
+
+##### Request Processing Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant UI
+    participant API
+    participant Intent
+    participant Response
+    participant AI as AI Providers
+    participant Pinecone
+
+    User->>UI: Send message
+    UI->>API: POST /api/chat
+    API->>Intent: Detect intention
+    Intent->>AI: Classify (OpenAI)
+    AI-->>Intent: Intention type
+    Intent-->>API: Return intention
+
+    alt Question Intent
+        API->>Response: respondToQuestion()
+        Response->>AI: Generate HyDE
+        AI-->>Response: Hypothetical answer
+        Response->>AI: Create embedding
+        AI-->>Response: Vector embedding
+        Response->>Pinecone: Query with embedding
+        Pinecone-->>Response: Relevant chunks
+        Response->>AI: Generate answer with context
+        AI-->>Response: Stream response
+        Response-->>UI: Stream with citations
+    else Random/Hostile Intent
+        API->>Response: respondToRandom/Hostile()
+        Response->>AI: Generate response
+        AI-->>Response: Stream response
+        Response-->>UI: Stream response
+    end
+
+    UI-->>User: Display response
+```
+
+##### RAG (Retrieval-Augmented Generation) Pipeline
+
+```mermaid
+graph TB
+    Q[User Question] --> H[Generate Hypothetical Answer]
+    H --> E[Create Embedding]
+    E --> P[Query Pinecone]
+    P --> C[Retrieve Chunks]
+    C --> S[Aggregate Sources]
+    S --> O[Order by Relevance]
+    O --> B[Build Context]
+    B --> R[Generate Final Response]
+    R --> U[Stream to User]
+```
+
+##### Component Interaction
+
+```mermaid
+graph LR
+    Page[page.tsx] --> ChatInterface[Chat Interface]
+    ChatInterface --> Header[Header Component]
+    ChatInterface --> Messages[Messages Component]
+    ChatInterface --> Input[Input Component]
+    ChatInterface --> Footer[Footer Component]
+
+    Messages --> Citation[Citation Display]
+    Messages --> Loading[Loading Indicators]
+    Messages --> Formatting[Message Formatting]
+
+    Input --> API[API Route]
+    API --> Intent[Intention Module]
+    API --> Response[Response Module]
+    Response --> Streaming[Streaming Handler]
+    Streaming --> Messages
+```
 
 Feel free to use this customizable AI chatbot for your own projects. Some use cases include personal assistants, FAQ bots, research assistants, and more. The possibilities are endless! 🚀
 
