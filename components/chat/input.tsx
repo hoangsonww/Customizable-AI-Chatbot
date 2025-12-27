@@ -2,7 +2,6 @@
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { ArrowUp } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
@@ -47,7 +46,6 @@ export default function ChatInput({
   input,
   isLoading,
 }: ChatInputProps) {
-  const [isFocused, setIsFocused] = useState(false);
   const form = useForm({
     defaultValues: {
       message: "",
@@ -56,14 +54,12 @@ export default function ChatInput({
 
   return (
     <>
-      <div className="z-10 flex flex-col justify-center items-center fixed bottom-0 mt-0 w-screen p-5 bg-background text-base">
-        <div className="w-full">
+      <div className="z-10 fixed bottom-0 left-0 right-0 flex flex-col items-center bg-gradient-to-t from-background via-background/90 to-transparent pb-5 pt-3 text-base">
+        <div className="w-full max-w-4xl px-4 sm:px-6">
           <Form {...form}>
             <form
               onSubmit={handleSubmit}
-              className={`flex-0 flex w-full p-1 border rounded-full shadow-sm ${
-                isFocused ? "ring-2 ring-ring ring-offset-2" : ""
-              }`}
+              className="flex w-full items-center gap-2 rounded-2xl border bg-background/80 p-2 shadow-lg backdrop-blur transition focus-within:ring-2 focus-within:ring-ring/60"
             >
               <FormField
                 control={form.control}
@@ -75,10 +71,8 @@ export default function ChatInput({
                         {...field}
                         onChange={handleInputChange}
                         value={input}
-                        className="border-none focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent"
-                        onFocus={() => setIsFocused(true)}
-                        onBlur={() => setIsFocused(false)}
-                        placeholder="Type your message here..."
+                        className="border-none bg-transparent px-3 py-2 text-base placeholder:text-muted-foreground/80 focus-visible:ring-0 focus-visible:ring-offset-0"
+                        placeholder="Ask a question, paste text, or request a plan..."
                       />
                     </FormControl>
                   </FormItem>
@@ -86,7 +80,7 @@ export default function ChatInput({
               />
               <Button
                 type="submit"
-                className="rounded-full w-10 h-10 p-0 flex items-center justify-center"
+                className="h-10 w-10 rounded-xl p-0 text-primary-foreground shadow transition hover:shadow-md"
                 disabled={input.trim() === "" || isLoading}
               >
                 <ArrowUp className="w-5 h-5" />
@@ -94,7 +88,9 @@ export default function ChatInput({
             </form>
           </Form>
         </div>
-        <ChatFooter />
+        <div className="w-full max-w-4xl px-4 sm:px-6">
+          <ChatFooter />
+        </div>
       </div>
     </>
   );

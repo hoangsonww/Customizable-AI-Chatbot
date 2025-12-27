@@ -19,7 +19,7 @@ import Link from "next/link";
  */
 export default function ChatFooter() {
   return (
-    <div className="w-full text-xs flex flex-wrap pt-2 text-foreground">
+    <div className="w-full text-xs flex flex-wrap pt-3 text-muted-foreground">
       {/* Left Pane */}
       <div className="w-full sm:flex-1 text-center sm:text-left mb-1 sm:mb-0">
         <Link href="/terms" className="hover:underline">

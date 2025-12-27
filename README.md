@@ -20,7 +20,7 @@
 ![Makefile](https://img.shields.io/badge/Makefile-4B5563?logo=gnu&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 
-A fully customizable AI chatbot built with modern web technologies. This project is designed to let you tailor every aspect of your chatbot, from its appearance and messaging to the underlying AI integrations. With support for advanced technologies such as Next.js, Tailwind CSS, RAG (Retrieval-Augmented Generation), Pinecone, and multiple AI APIs (OpenAI, Fireworks AI, Anthropic AI), this solution makes deploying your own conversational AI a breeze.
+A fully customizable RAG AI chatbot built with modern web technologies. This project is designed to let you tailor every aspect of your chatbot, from its appearance and messaging to the underlying AI integrations. With support for advanced technologies such as Next.js, Tailwind CSS, RAG (Retrieval-Augmented Generation), Pinecone, and multiple AI APIs (OpenAI, Fireworks AI, Anthropic AI), this solution makes deploying your own conversational AI a breeze.
 
 **Are you ready to build your own AI chatbot in minutes? Let's get started!** 🚀
 
