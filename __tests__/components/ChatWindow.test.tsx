@@ -9,6 +9,8 @@ describe("ChatWindow", () => {
 
   it("shows a placeholder when empty", () => {
     render(<ChatWindow />);
-    expect(screen.getByPlaceholderText(/type your message/i)).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText(/type your message/i),
+    ).toBeInTheDocument();
   });
 });
