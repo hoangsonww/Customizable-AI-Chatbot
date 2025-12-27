@@ -71,7 +71,9 @@ export function cleanTextChunk(text) {
  * @returns {string} - Final formatted prompt string
  */
 export function createPromptTemplate(messages, systemInstructions) {
-  const messageContent = messages.map((msg) => `${msg.role}: ${msg.content}`).join("\n");
+  const messageContent = messages
+    .map((msg) => `${msg.role}: ${msg.content}`)
+    .join("\n");
   return `${systemInstructions}\n\n${messageContent}`;
 }
 
@@ -104,7 +106,7 @@ export function combineChunksIntoContext(chunks) {
  */
 export function extractSourceUrlsFromChunks(chunks) {
   const sourceUrls = chunks.map((chunk) => chunk.source_url);
-  return [...new Set(sourceUrls)];  // Return unique URLs
+  return [...new Set(sourceUrls)]; // Return unique URLs
 }
 
 /**

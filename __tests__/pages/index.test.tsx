@@ -4,6 +4,8 @@ import HomePage from "@/app/page";
 describe("HomePage", () => {
   it("renders chatbot title", () => {
     render(<HomePage />);
-    expect(screen.getByRole("heading", { name: /customizable ai chatbot/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /customizable ai chatbot/i }),
+    ).toBeInTheDocument();
   });
 });

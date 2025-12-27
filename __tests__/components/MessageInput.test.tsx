@@ -4,7 +4,9 @@ import MessageInput from "@/components/MessageInput";
 describe("MessageInput", () => {
   it("renders input field", () => {
     render(<MessageInput onSend={() => {}} />);
-    expect(screen.getByPlaceholderText(/type your message/i)).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText(/type your message/i),
+    ).toBeInTheDocument();
   });
 
   it("triggers onSend callback on submit", () => {

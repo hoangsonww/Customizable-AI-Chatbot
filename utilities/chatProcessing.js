@@ -73,7 +73,11 @@ export function extractCitationsFromMessage(message) {
  * @param {Array} citations - List of citations to include in the response
  * @returns {string} - The formatted structured response
  */
-export function generateStructuredResponse(userMessage, chatbotResponse, citations) {
+export function generateStructuredResponse(
+  userMessage,
+  chatbotResponse,
+  citations,
+) {
   let response = `User: ${userMessage}\n\n`;
   response += `Chatbot: ${chatbotResponse}\n\n`;
   if (citations.length > 0) {
