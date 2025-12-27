@@ -38,15 +38,19 @@ export function Pill({
 }) {
   return (
     <div
-      className={`flex flex-row gap-2 items-center ${
-        isDone ? "text-gray-200" : "text-gray-400 animate-pulse"
-      } ${isError ? "text-red-500" : ""}`}
+      className={`flex flex-row items-center gap-2 rounded-full border px-3 py-1 text-xs sm:text-sm ${
+        isError
+          ? "border-destructive/40 bg-destructive/10 text-destructive"
+          : isDone
+            ? "border-transparent bg-muted/40 text-muted-foreground"
+            : "border-border/60 bg-background/70 text-muted-foreground animate-pulse"
+      }`}
     >
-      {icon === "thinking" && <Brain className="w-4 h-4 animate-pulse" />}
-      {icon === "searching" && <FileSearch className="w-4 h-4 animate-pulse" />}
-      {icon === "understanding" && <Scan className="w-4 h-4 animate-pulse" />}
-      {icon === "documents" && <FileStack className="w-4 h-4 animate-pulse" />}
-      {icon === "error" && <AlertCircle className="w-4 h-4 animate-pulse" />}
+      {icon === "thinking" && <Brain className="w-4 h-4" />}
+      {icon === "searching" && <FileSearch className="w-4 h-4" />}
+      {icon === "understanding" && <Scan className="w-4 h-4" />}
+      {icon === "documents" && <FileStack className="w-4 h-4" />}
+      {icon === "error" && <AlertCircle className="w-4 h-4" />}
       <p>{status}</p>
     </div>
   );
@@ -70,7 +74,7 @@ export default function Loading({
     <motion.div
       whileHover={{ scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="py-1 max-w-[60%] transition-shadow duration-300"
+      className="flex max-w-[75%] flex-col gap-2 rounded-3xl border bg-card/80 px-4 py-3 shadow-sm backdrop-blur transition-shadow duration-300"
     >
       {indicatorState.map((indicator, index) => {
         return (
