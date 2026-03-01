@@ -12,6 +12,8 @@ import { twMerge } from "tailwind-merge";
  * @date 2025-05-11
  */
 
+const mergeClassNames = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
+
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+  return mergeClassNames(...inputs);
 }
